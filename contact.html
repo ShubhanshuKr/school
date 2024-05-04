@@ -4,25 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Us</title>
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&family=
-        Roboto+Condensed:wght@300;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&family=Roboto+Condensed:wght@300;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <section class="header">
         <nav>
-            <a href="index.html"><img src="Photos\logo.png"></a>
+            <a href="index.html"><img src="Photos\logo.png" alt="Logo"></a>
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>
                     <li><a href="courses.html">COURSE</a></li>
-                    <li><a href="">BLOG</a></li>
-                    <li><a href="">CONTACT</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">CONTACT</a></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -30,18 +29,13 @@
 
         <div class="text-box">
             <h1>Contact Us</h1>
-            <p>Join the best Primary & Secondary school of muzaffarpur now.
-            </p>
+            <p>Join the best Primary & Secondary school of Muzaffarpur now.</p>
         </div>
     </section>
 
     <section class="map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28690.81419825337!2d85.89011727472995!3d25.989291641382906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edbfe0b1ec5e43%3A0xe7f6a9b279bfe3f6!2sGhosrama%2C%20Bihar!5e0!3m2!1sen!2sin!4v1687925445482!5m2!1sen!2sin"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28690.81419825337!2d85.89011727472995!3d25.989291641382906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edbfe0b1ec5e43%3A0xe7f6a9b279bfe3f6!2sGhosrama%2C%20Bihar!5e0!3m2!1sen!2sin!4v1687925445482!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
-
 
     <section class="contact-us">
         <div class="row">
@@ -49,15 +43,15 @@
                 <div>
                     <i class="fa fa-home"></i>
                     <span>
-                        <h5>XYZ Road ,abc Building</h5>
-                        <p>muzaffarpur, Bihar, India</p>
+                        <h5>XYZ Road, abc Building</h5>
+                        <p>Muzaffarpur, Bihar, India</p>
                     </span>
                 </div>
                 <div>
                     <i class="fa fa-phone"></i>
                     <span>
                         <h5>+91 8651637501</h5>
-                        <p>Monday to Saturday, 10AM to 6PM>
+                        <p>Monday to Saturday, 10AM to 6PM</p>
                     </span>
                 </div>
                 <div>
@@ -70,25 +64,53 @@
             </div>
 
             <div class="contact-col">
-                <form action="send_email.php" method="post">
-                    <input type="text" placeholder="Enter Your Name" required>
-                    <input type="email" placeholder="Enter Your email address" required>
-                    <input type="text" placeholder="Enter Your subject" required>
-                    <textarea rows="8" placeholder="Message" required></textarea>
+                <form id="myForm">
+                    <input type="text" placeholder="Enter Your Name" id="name" required>
+                    <input type="email" placeholder="Enter Your email address" id="email" required>
+                    <input type="text" placeholder="Enter Your subject" id="subject" required>
+                    <textarea rows="8" placeholder="Message" id="message" required></textarea>
                     <button type="submit" class="hero-btn red-btn">Send Message</button>
                 </form>
             </div>
-
         </div>
     </section>
 
-    <!--Footer Section-->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("c7JGXu1SNTNk-lG1G");
+        })();
 
+        const form = document.getElementById('myForm');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            emailjs.send('service_i91p70j', 'template_o54zq4f', {
+                name: name,
+                email: email,
+                subject: subject,
+                message: message
+            })
+            .then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Email sent successfully!');
+            }, function (error) {
+                console.log('FAILED...', error);
+                alert('Email sending failed!');
+            });
+        });
+    </script>
+
+    <!--Footer Section-->
     <section class="footer">
         <h1>About Us</h1>
-        <p>Welcome to our school. We are a dedicated community of learners, empowering students to <br>achieve their
-            full potential through quality education and a nurturing environment.
-        </p>
+        <p>Welcome to our school. We are a dedicated community of learners, empowering students to achieve their full potential through quality education and a nurturing environment.</p>
         <div class="icons">
             <i class="fa fa-facebook" aria-hidden="true"></i>
             <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -96,10 +118,9 @@
             <i class="fa fa-twitter" aria-hidden="true"></i>
         </div>
         <p>Made with <i class="fa fa-heart-o"></i> by Shubhanshu Sawarn</p>
-
     </section>
 
-    <a href="" id="scroll-button" title="Scroll to Top">&uarr;</a>
+    <a href="#" id="scroll-button" title="Scroll to Top">&uarr;</a>
 
     <br><br>
     <script src="script.js"></script>
