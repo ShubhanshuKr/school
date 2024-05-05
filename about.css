@@ -200,8 +200,9 @@ p {
         margin-bottom: 40px;
     }
 
-    .about-col img {
-        width: 80%;
+    .abot-col img {
+        width: 90% ;
+        margin-left: 5%;
         height: auto;
     }
 }
